@@ -1,10 +1,10 @@
 import "./styles.css";
 import React from "react";
-import Navsection from "./Components/Navsection";
+import Navigations from "./Components/Navigations";
 const App = () => {
   return (
     <div className="App">
-      <Navsection />
+      <Navigations />
     </div>
   );
 };
