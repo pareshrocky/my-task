@@ -302,7 +302,7 @@ const Feedback = () => {
       {submitMsg ? (
         <div className="bg-light vh-100 text-left mx-5 px-5">
           <h1 className="my-5 pt-5">Thanks! for your feedback.</h1>
-          <a href="/Contacts">Give another Feedback.</a>
+          <a href="/contacts">Give another Feedback.</a>
         </div>
       ) : (
         <Form className="container py-3 w-75 p-0" onSubmit={handleClick}>
