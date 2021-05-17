@@ -57,11 +57,6 @@ h2 {
 .dropDown {
   margin-left: 112%;
 }
-.nav-tabs .nav-item .active:hover,
-.nav-tabs .nav-item .nav-link:hover {
-  text-transform: none;
-  transform: none;
-}
 .navbar-dark .navbar-nav .nav-link:hover {
   transform: translate(0, 0);
 }
@@ -111,6 +106,16 @@ h2 {
 }
 .med-btn:hover {
   opacity: 0.8;
+}
+.nav-tabs .nav-item .active:hover,
+.nav-tabs .nav-item .nav-link:hover {
+  text-transform: none;
+  transform: none;
+  font-weight: 400;
+}
+.thumbnails {
+  height: 75px;
+  width: 75px;
 }
 @media only screen and (max-width: 900px) {
   .nav-div {

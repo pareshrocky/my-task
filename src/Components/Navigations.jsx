@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import Navsection from "./Navsection.jsx";
 import Feedback from "./Feedback.jsx";
 import Home from "./Home.jsx";
-import Photos from "./Photos.jsx";
+import PhotosApi from "./PhotosApi.jsx";
 import Products from "./Products/Products.jsx";
 const Navigations = () => {
   return (
@@ -17,7 +17,7 @@ const Navigations = () => {
           <h1>This is our Company.</h1>
         </Route>
         <Route exact path="/photos">
-          <Photos />
+          <PhotosApi />
         </Route>
         <Route exact path="/contacts">
           <Feedback />
