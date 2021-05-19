@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navsection from "./Navsection.jsx";
 import Feedback from "./Feedback.jsx";
 import Home from "./Home.jsx";
@@ -16,7 +16,7 @@ const Navigations = () => {
         <Route exact path="/company">
           <h1>This is our Company.</h1>
         </Route>
-        <Route exact path="/photos">
+        <Route path="/photos">
           <PhotosApi />
         </Route>
         <Route exact path="/contacts">
@@ -25,7 +25,6 @@ const Navigations = () => {
         <Route path="/product">
           <Products />
         </Route>
-        <Redirect to="/" />
       </Switch>
     </Router>
   );
