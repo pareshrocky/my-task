@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "reactstrap";
- // eslint-disable-next-line
+// eslint-disable-next-line
 import { Switch, Route, Link } from "react-router-dom";
 const PhotosApi = (props) => {
   const [photos, setPhotos] = useState([]);
@@ -33,9 +33,9 @@ const PhotosApi = (props) => {
               return null;
             }
             return preview === false ? (
-              <Col lg="4" md="6" key={photo.id}>
+              <Col lg="4" md="6" sm="12" key={photo.id}>
                 <div
-                  className="bg-light my-4"
+                  className="bg-light my-4 mx-auto"
                   style={{ width: "300px", height: "200px" }}
                 >
                   <div className="d-flex flex-row justify-content-around align-items-center">
@@ -75,7 +75,11 @@ const PhotosApi = (props) => {
                   key={photo.id}
                 >
                   <h4 className="text-info font-weight-light my-3">Preview</h4>
-                  <img className="mt-2" src={photo.url} alt="bigPhoto" />
+                  <img
+                    className="mt-2 bigimage"
+                    src={photo.url}
+                    alt="bigPhoto"
+                  />
                   <button
                     onClick={() => {
                       setPreview((prev) => !prev);

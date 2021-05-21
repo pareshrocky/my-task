@@ -162,4 +162,8 @@ h2 {
   .footer {
     display: block;
   }
+  .bigimage {
+    width: 350px;
+    height: 350px;
+  }
 }
