@@ -1,9 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route,Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import Navsection from "./Navsection.jsx";
 import Feedback from "./Feedback.jsx";
 import Home from "./Home.jsx";
-import PhotosApi from "./PhotosApi.jsx";
+import AlbumsApi from "./Albums/AlbumsApi.jsx";
 import Products from "./Products/Products.jsx";
 const Navigations = () => {
   return (
@@ -16,8 +21,8 @@ const Navigations = () => {
         <Route exact path="/company">
           <h1>This is our Company.</h1>
         </Route>
-        <Route path="/photos">
-          <PhotosApi />
+        <Route path="/albums">
+          <AlbumsApi />
         </Route>
         <Route exact path="/contacts">
           <Feedback />
@@ -25,7 +30,7 @@ const Navigations = () => {
         <Route path="/product">
           <Products />
         </Route>
-        <Redirect to="/"/>
+        <Redirect to="/" />
       </Switch>
     </Router>
   );

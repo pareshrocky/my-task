@@ -70,8 +70,8 @@ const Navsection = (props) => {
             </DropdownMenu>
           </UncontrolledDropdown>
           <NavItem className="mx-auto mb-2">
-            <Link to="/photos" className="text-white p-0 text-decoration-none ">
-              Photos
+            <Link to="/albums" className="text-white p-0 text-decoration-none ">
+              Albums
             </Link>
           </NavItem>
           <NavItem className="mx-auto mb-2">
