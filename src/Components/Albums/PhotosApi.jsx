@@ -88,7 +88,7 @@ const PhotosApi = (props) => {
                   >
                     <Link
                       style={{ fontSize: "18px" }}
-                      to={"/albums/" + photo.id}
+                      to={"/albums/" + props.id}
                     >
                       Back
                     </Link>
