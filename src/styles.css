@@ -139,6 +139,34 @@ h2 {
 .title-album {
   text-decoration: underline;
 }
+/* Pagination */
+.paginationClass {
+  padding: 20px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-left: 0px;
+  width: 97.5%;
+  height: 40px;
+  list-style: none;
+}
+.paginationClass a {
+  padding: 10px;
+  margin: 7px;
+  border: 1px solid #2b2eff;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #2b2eff;
+  text-decoration: none;
+}
+.paginationClass a:hover {
+  background-color: #2b2eff;
+  color: white;
+}
+.paginationActive a {
+  background-color: #2b2eff;
+  color: white;
+}
 @media only screen and (max-width: 900px) {
   .nav-div {
     position: static;
