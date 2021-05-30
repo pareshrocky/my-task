@@ -9,6 +9,7 @@ import Navsection from "./Navsection.jsx";
 import Feedback from "./Feedback.jsx";
 import Home from "./Home.jsx";
 import AlbumsApi from "./Albums/AlbumsApi.jsx";
+import PhotosApi from "./Albums/PhotosApi";
 import Products from "./Products/Products.jsx";
 const Navigations = () => {
   return (
@@ -21,8 +22,11 @@ const Navigations = () => {
         <Route exact path="/company">
           <h1>This is our Company.</h1>
         </Route>
-        <Route path="/albums">
+        <Route exact path="/albums">
           <AlbumsApi />
+        </Route>
+        <Route exact path="/albums/:albumId">
+          <PhotosApi />
         </Route>
         <Route exact path="/contacts">
           <Feedback />

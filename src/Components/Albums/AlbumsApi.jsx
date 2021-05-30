@@ -27,9 +27,9 @@ const AlbumsApi = () => {
               return (
                 <li className="my-4 text-left" key={album.id}>
                   <Link
-                    onClick={() => {
-                      setUid(album.id);
-                    }}
+                    // onClick={() => {
+                    //   setUid(album.id);
+                    // }}
                     to={"/albums/" + album.id}
                   >
                     {album.title}
@@ -57,11 +57,11 @@ const AlbumsApi = () => {
           pageRangeDisplayed={5}
           marginPagesDisplayed={2}
         />
-        <Switch>
+        {/* <Switch>
           <Route path={"/albums/" + uid}>
             <PhotosApi id={uid} />
           </Route>
-        </Switch>
+        </Switch> */}
       </div>
     </div>
   );

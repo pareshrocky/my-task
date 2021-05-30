@@ -1,23 +1,26 @@
-
 import React, { useState, useEffect } from "react";
 import { Row, Col } from "reactstrap";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, useParams } from "react-router-dom";
 import PreviewPhoto from "./PreviewPhoto";
 import ReactPaginate from "react-paginate";
+
 const PhotosApi = (props) => {
   const [photos, setPhotos] = useState([]);
   const [previewPhoto, setPreviewPhoto] = useState("");
   const [photoUid, setPhotoUid] = useState(0);
-  const link =
-    "https://jsonplaceholder.typicode.com/albums/" + props.id + "/photos";
+  const { albumId } = useParams()
+
+  const link = "https://jsonplaceholder.typicode.com/albums/" + albumId + "/photos";
   const [pageIndex, setPageIndex] = useState(0);
   const photosPerPage = 9;
   const initialPhotoIndex = pageIndex * photosPerPage;
+  
   useEffect(() => {
     fetch(link)
       .then((response) => response.json())
       .then((json) => setPhotos(json));
-  });
+  }, []);
+  
   return (
     <div className="bg-light">
       <div className="container bg-white pb-1">
@@ -28,9 +31,9 @@ const PhotosApi = (props) => {
           {photos
             .slice(initialPhotoIndex, initialPhotoIndex + photosPerPage)
             .map((photo) => {
-              if (photo.id > 50 * props.id - 2) {
-                return null;
-              }
+              // if (photo.id > 50 * props.id - 2) {
+              //   return null;
+              // }
               return (
                 <Col lg="4" md="6" key={photo.id}>
                   <div
@@ -52,11 +55,11 @@ const PhotosApi = (props) => {
                       Preview Image
                     </Link> */}
                       <Link
-                        onClick={() => {
-                          setPreviewPhoto(photo.url);
-                          setPhotoUid(photo.id);
-                        }}
-                        to={"/albums/" + props.id + "/preview/" + photo.id}
+                        // onClick={() => {
+                        //   setPreviewPhoto(photo.url);
+                        //   setPhotoUid(photo.id);
+                        // }}
+                        to={"/albums/" + albumId + "/preview/" + photo.id}
                       >
                         Preview Image
                       </Link>
@@ -85,11 +88,11 @@ const PhotosApi = (props) => {
           pageRangeDisplayed={5}
           marginPagesDisplayed={2}
         />
-        <Switch>
+        {/* <Switch>
           <Route path={"/albums/" + props.id + "/preview/" + photoUid}>
             <PreviewPhoto previewPhoto={previewPhoto} />
           </Route>
-        </Switch>
+        </Switch> */}
       </div>
     </div>
   );
