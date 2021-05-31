@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
+import React, { useState } from "react";
 import { Link, Switch, Route, Redirect } from "react-router-dom";
 import PhotosApi from "./PhotosApi";
+import useCustomEffect from "./useCustomEffect.jsx";
+import usePagination from "./usePagination.jsx";
 const AlbumsApi = () => {
   const [albums, setAlbums] = useState([]);
   const [pgIndex, setPgIndex] = useState(0);
   const albumsPerPage = 10;
   const initialAlbumIndex = pgIndex * albumsPerPage;
   const [uid, setUid] = useState(0); // uid is set to take the value of album.id
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/albums`)
-      .then((response) => response.json())
-      .then((json) => setAlbums(json));
-  }, []);
+  // Next line is for custom hooks
+  const link = `https://jsonplaceholder.typicode.com/albums`;
+  useCustomEffect(link, setAlbums);
+  const pageCount = Math.ceil(albums.length / albumsPerPage);
   return (
     <Switch>
       <Route exact path="/albums">
@@ -40,25 +40,8 @@ const AlbumsApi = () => {
                   );
                 })}
             </ul>
-            <ReactPaginate
-              previousLabel="Previous"
-              nextLabel="Next"
-              pageCount={Math.ceil(albums.length / albumsPerPage)}
-              onPageChange={(data) => {
-                let selected = data.selected;
-                setPgIndex(selected);
-              }}
-              onPageActive={() => {
-                setPgIndex(1);
-              }}
-              containerClassName="paginationClass"
-              activeClassName="paginationActive"
-              previousLinkClassName="previousBtn"
-              nextLinkClassName="nextBtn"
-              pageLinkClassName="numberBtn"
-              pageRangeDisplayed={5}
-              marginPagesDisplayed={2}
-            />
+            {/* custom hook next line */}
+            {usePagination(pageCount, setPgIndex)}
           </div>
         </div>
       </Route>
@@ -70,14 +53,6 @@ const AlbumsApi = () => {
   );
 };
 export default AlbumsApi;
-
-
-
-
-
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import ReactPaginate from "react-paginate";

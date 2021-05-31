@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Row, Col } from "reactstrap";
 import { Switch, Route, Link, useParams, Redirect } from "react-router-dom";
 import PreviewPhoto from "./PreviewPhoto";
-import ReactPaginate from "react-paginate";
+import useCustomEffect from "./useCustomEffect";
+import usePagination from "./usePagination.jsx";
 const PhotosApi = (props) => {
   const [photos, setPhotos] = useState([]);
   const [previewPhoto, setPreviewPhoto] = useState("");
@@ -12,12 +13,11 @@ const PhotosApi = (props) => {
   const [pageIndex, setPageIndex] = useState(0);
   const photosPerPage = 6;
   const initialPhotoIndex = pageIndex * photosPerPage;
-  useEffect(() => {
-    // eslint-disable-next-line
-    fetch("https://jsonplaceholder.typicode.com/albums/" + props.id + "/photos")
-      .then((response) => response.json())
-      .then((json) => setPhotos(json));
-  }, []);
+  const link =
+    "https://jsonplaceholder.typicode.com/albums/" + props.id + "/photos";
+  // next line is custom Hooks
+  useCustomEffect(link, setPhotos);
+  const pageCount = Math.ceil(photos.length / photosPerPage);
   return (
     <Switch>
       <Route exact path={"/albums/" + props.id}>
@@ -62,25 +62,8 @@ const PhotosApi = (props) => {
                   );
                 })}
             </Row>
-            <ReactPaginate
-              previousLabel="Previous"
-              nextLabel="Next"
-              pageCount={Math.ceil(photos.length / photosPerPage)}
-              onPageChange={(data) => {
-                let selected = data.selected;
-                setPageIndex(selected);
-              }}
-              onPageActive={() => {
-                setPageIndex(1);
-              }}
-              containerClassName="paginationClass"
-              activeClassName="paginationActive"
-              previousLinkClassName="previousBtn"
-              nextLinkClassName="nextBtn"
-              pageLinkClassName="numberBtn"
-              pageRangeDisplayed={5}
-              marginPagesDisplayed={2}
-            />
+            {/* custom hooks */}
+            {usePagination(pageCount, setPageIndex)}
           </div>
         </div>
       </Route>
