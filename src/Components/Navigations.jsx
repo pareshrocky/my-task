@@ -12,7 +12,7 @@ import AlbumsApi from "./Albums/AlbumsApi.jsx";
 import Products from "./Products/Products.jsx";
 const Navigations = () => {
   return (
-    <Router>
+    <>
       <Navsection />
       <Switch>
         <Route exact path="/">
@@ -32,7 +32,7 @@ const Navigations = () => {
         </Route>
         <Redirect to="/" />
       </Switch>
-    </Router>
+    </>
   );
 };
 export default Navigations;
