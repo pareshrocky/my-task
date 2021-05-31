@@ -13,10 +13,11 @@ const PhotosApi = (props) => {
   const photosPerPage = 6;
   const initialPhotoIndex = pageIndex * photosPerPage;
   useEffect(() => {
+    // eslint-disable-next-line
     fetch("https://jsonplaceholder.typicode.com/albums/" + props.id + "/photos")
       .then((response) => response.json())
       .then((json) => setPhotos(json));
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Switch>
       <Route exact path={"/albums/" + props.id}>
