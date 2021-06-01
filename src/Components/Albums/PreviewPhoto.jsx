@@ -7,7 +7,10 @@ const PreviewPhoto = (props) => {
       <h2 className="text-info font-weight-light my-3">Preview</h2>
       <img className="mt-2 bigimage" src={props.previewPhoto} alt="bigPhoto" />
       <Button className="back my-3 text-info bg-white">
-        <Link style={{ fontSize: "18px" }} to={"/albums/" + props.id}>
+        <Link
+          style={{ fontSize: "18px" }}
+          to={"/albums/albums-title/" + props.id}
+        >
           Back
         </Link>
       </Button>

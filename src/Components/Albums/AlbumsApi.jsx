@@ -15,7 +15,7 @@ const AlbumsApi = () => {
   const pageCount = Math.ceil(albums.length / albumsPerPage);
   return (
     <Switch>
-      <Route exact path="/albums">
+      <Route exact path="/albums/albums-title">
         <div className="bg-light">
           <div className="container pb-2">
             <h1 className="font-weight-light text-secondary py-3">Albums</h1>
@@ -32,7 +32,7 @@ const AlbumsApi = () => {
                         onClick={() => {
                           setUid(album.id);
                         }}
-                        to={"/albums/" + album.id}
+                        to={"/albums/albums-title/" + album.id}
                       >
                         {album.title}
                       </Link>
@@ -45,10 +45,10 @@ const AlbumsApi = () => {
           </div>
         </div>
       </Route>
-      <Route path={"/albums/" + uid}>
+      <Route path={"/albums/albums-title/" + uid}>
         <PhotosApi id={uid} />
       </Route>
-      <Redirect to="/albums" />
+      <Redirect to="/albums/albums-title" />
     </Switch>
   );
 };

@@ -20,7 +20,7 @@ const PhotosApi = (props) => {
   const pageCount = Math.ceil(photos.length / photosPerPage);
   return (
     <Switch>
-      <Route exact path={"/albums/" + props.id}>
+      <Route exact path={"/albums/albums-title/" + props.id}>
         <div className="bg-light">
           <div className="container bg-white pb-1">
             <h1 className=" mb-3 pt-3 font-weight-light text-info">
@@ -52,7 +52,12 @@ const PhotosApi = (props) => {
                               setPreviewPhoto(photo.url);
                               setPhotoUid(photo.id);
                             }}
-                            to={"/albums/" + props.id + "/preview/" + photo.id}
+                            to={
+                              "/albums/albums-title/" +
+                              props.id +
+                              "/preview/" +
+                              photo.id
+                            }
                           >
                             Preview Image
                           </Link>
@@ -67,10 +72,10 @@ const PhotosApi = (props) => {
           </div>
         </div>
       </Route>
-      <Route path={"/albums/" + props.id + "/preview/" + photoUid}>
+      <Route path={"/albums/albums-title/" + props.id + "/preview/" + photoUid}>
         <PreviewPhoto previewPhoto={previewPhoto} id={props.id} />
       </Route>
-      <Redirect to={"/albums/" + props.id} />
+      <Redirect to={"/albums/albums-title/" + props.id} />
     </Switch>
   );
 };
